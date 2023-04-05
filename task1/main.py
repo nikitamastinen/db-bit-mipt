@@ -77,10 +77,10 @@ class Homework:
 
         self.instance_.people.create_index([('Age', ASCENDING)])
 
-        no_index_stats = self.instance_.people.find({'Age': {'$gt': '24'}}).explain()
-        print(no_index_stats)
+        index_stats = self.instance_.people.find({'Age': {'$gt': '24'}}).explain()
+        print(index_stats)
 
-        # executionTimeMillisEstimate': 3 after vs executionTimeMillisEstimate': 0 before
+        # executionTimeMillisEstimate': 0 after vs executionTimeMillisEstimate': 3 before
 
 def main():
     homework = Homework()
